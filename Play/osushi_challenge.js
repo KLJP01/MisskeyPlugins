@@ -43,13 +43,30 @@ if (challengeNum == 0) {
   }
 
 
-let result = `{food} {chara} {foodMes}`
+let result = {text: `{food} {chara} {foodMes} {Str:lf}#1日1回お寿司食べるかなチャレンジ`}
 
+//playデバッグ用
+// Ui:render([
+// 	Ui:C:button({
+// 		text: "CHECK!"
+// 		onClick: @() {
+// 			Mk:dialog(null `{result}{Str:lf}#1日1回お寿司食べるかなチャレンジ`)
+// 		}
+// 	})
+// ])
+
+// UIを表示
 Ui:render([
-	Ui:C:button({
-		text: "CHECK!"
-		onClick: @() {
-			Mk:dialog(null `{result}{Str:lf}#1日1回お寿司食べるかなチャレンジ`)
-		}
+	Ui:C:container({
+		align: 'center'
+		children: [
+			Ui:C:mfm(result)
+			Ui:C:postFormButton({
+				text: "投稿する"
+				rounded: true
+				primary: true
+				form: result
+			})
+		]
 	})
 ])
